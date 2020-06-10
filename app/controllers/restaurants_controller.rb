@@ -10,7 +10,13 @@ end
 
 def create
     @restaurant = Restaurant.new(restaurant_params)
-end
+
+    if @restaurant.save
+      redirect_to @restaurant, notice: 'Restaurant was successfully created.'
+    else
+      render :new
+    end
+  end
 
 def show
     @restaurant = Restaurant.find(params[:id])
